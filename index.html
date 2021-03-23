@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<title>Document</title>
+
+		<link rel="stylesheet" type="text/css" href="public/css/app.css"/>
+
+		<!-- Bootstrap -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+	</head>
+
+	<body>
+		<header class="container-fluid bg-dark py-3">
+			<div class="row row-cols-lg-auto g-3 align-items-center">
+				<h1 class="col-12 text-white">Serpent :</h1>
+			</div>
+		</header>
+
+		<main class="main d-flex flex-wrap justify-content-center align-items-center bg-secondary">
+			<canvas id="box" class="box bg-dark rounded-3 m-5" width="10" height="10"></canvas>
+		</main>
+
+		<div class="sources d-none">
+			<img id="Actor1" src="public/img/characters/Actor1.png"/>
+		</div>
+	</body>
+
+	<!-- Script -->
+			<!-- Font Awesome -->
+				<script src="https://kit.fontawesome.com/9e8af133d8.js" crossorigin="anonymous"></script>
+
+			<!-- class -->
+				<!-- game -->
+					<script src="public/js/game.js"></script>
+				<!-- map -->
+					<script src="public/js/map.js"></script>
+				<!-- camera -->
+					<script src="public/js/camera.js"></script>
+				<!-- character -->
+					<script src="public/js/character.js"></script>
+
+			<!-- fonctions -->
+				<script type="text/javascript">
+					function randInRange(min,max){return Math.floor((Math.random()*max))+min}
+
+					function getPowOf(number, splitter, max, padding) {
+						var out = splitter*Math.round(number/splitter), max = splitter*max;
+						out = (out > max) ? max : out-padding;
+						return out;
+					}
+
+					function logSizes() {
+						console.log(
+							"_CELLS_SIZE " + this._CELLS_SIZE +
+							"\n_WORLD_WIDTH " + this._WORLD_WIDTH +
+							"\n_WORLD_HEIGHT " + this._WORLD_HEIGHT +
+							"\n_COUNT_CELLS_WIDTH " + this._COUNT_CELLS_WIDTH +
+							"\n_COUNT_CELLS_HEIGHT " + this._COUNT_CELLS_HEIGHT
+						);
+					}
+				</script>
+
+			<!-- default var -->
+				<script src="public/js/_DEFAULT_VAR_.js"></script>
+
+			<!-- main -->
+				<script type="text/javascript">
+					canvas.width = _WORLD_WIDTH;
+					canvas.height = _WORLD_HEIGHT;
+
+					var _OBJ_ = {};
+						_OBJ_['game'] = new Game();
+						_OBJ_['map'] = new Map();
+						_OBJ_['camera'] = new Camera(_OBJ_.map.entry.x, _OBJ_.map.entry.y);
+						_OBJ_['character'] = new Character(_OBJ_.map.entry.x, _OBJ_.map.entry.y, 0, document.getElementById('Actor1'), 0, 1);
+
+					_OBJ_.game.update();
+
+					logSizes();
+					_OBJ_.map.logMapCode();
+				</script>
+</html>
