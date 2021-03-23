@@ -5,7 +5,7 @@ class Camera {
 
 		this.x = x;
 		this.y = y;
-		move(0,0);
+		this.move(0,0);
 	}
 
 	update() {
