@@ -47,22 +47,18 @@ const // toute les constantes
 	_DIRECTION_VALUE = {
 		"up": {
 			"upcoming": { "x": 0, "y": -1 },
-			"limit": 0,
 			"animation": 3
 		},
 		"down": {
 			"upcoming": { "x": 0, "y": 1 },
-			"limit": _MAX_CELLS_HEIGHT,
 			"animation": 0
 		},
 		"right": {
 			"upcoming": { "x": 1, "y": 0 },
-			"limit": _MAX_CELLS_WIDTH,
 			"animation": 2
 		},
 		"left": {
 			"upcoming": { "x": -1, "y": 0 },
-			"limit": 0,
 			"animation": 1
 		}
 	};
