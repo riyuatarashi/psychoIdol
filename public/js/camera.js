@@ -3,8 +3,9 @@ class Camera {
 		this.visionWidth = _MAX_CELLS_WIDTH;
 		this.visionHeight = _MAX_CELLS_HEIGHT;
 
-		this.x = (x + this.visionWidth > _MAP_SIZE.width) ? _MAP_SIZE.width - this.visionWidth-1 : (x < 0) ? 0 : x;
-		this.y = (y + this.visionHeight > _MAP_SIZE.height) ? _MAP_SIZE.height - this.visionHeight-1 : (y < 0) ? 0 : y;
+		this.x = x;
+		this.y = y;
+		move(0,0);
 	}
 
 	update() {
