@@ -1,19 +1,33 @@
 class Game {
 	constructor() {
+		this.openMenu = [];
+		this.key_type = null;
+
 		this.submits = document.querySelectorAll('.submit');
+		this.changeKeys = document.querySelectorAll('.change-key');
 
 		var _this = this;
 		window.addEventListener("keydown", function(e) {
 			if(e.key === "Escape") {
-				_this.manageMenu('key-menu');
+				_this.diplayMenu('key-menu');
+				_this.stopUpdate();
+			}
+			else if(~_this.openMenu.indexOf('key-menu') && _this.key_type !== null) {
+				_this.changeKey(e.key, _this.key_type);
 			}
 		});
 
 		for(let i=0; i < this.submits.length; i++) {
 			this.submits[i].addEventListener("click", function(e) {
-				_this.manageMenu(e.target.attributes.ref.value, "close");
+				_this.hideMenu(e.target.attributes.ref.value);
+				_this.update();
 			});
 		}
+	}
+
+	setKeyType(type) {
+		console.log(type);
+		this.key_type = type;
 	}
 
 	update() {
@@ -23,24 +37,32 @@ class Game {
 		_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
 	}
 
-	manageMenu(menu, type = "open") {
-		switch(menu) {
-			case 'key-menu':
-				if(type == "open") {
-					this.diplayMenu(menu);
-				}
-				else {
-					this.hideMenu(menu);
-				}
-				break;
-		}
+	stopUpdate() {
+		cancelAnimationFrame(this.updateTimer);
+		this.updateTimer = null;
 	}
 
 	diplayMenu(menu) {
 		document.getElementById(menu).classList.remove('d-none');
+		this.openMenu.push(menu);
 	}
 
 	hideMenu(menu) {
 		document.getElementById(menu).classList.add('d-none');
+		this.openMenu.splice(this.openMenu.indexOf(menu), 1);
+	}
+
+	changeKey(newKey, type) {
+		let keySet = Object.entries(_KEYS_DIRECTION);
+
+		for(let i=0; i < keySet.length; i++) {
+			if(~keySet[i].indexOf(type)) {
+				keySet[i][0] = newKey;
+			}
+		}
+
+		_KEYS_DIRECTION = Object.fromEntries(keySet);
+		console.log('key-' + type);
+		document.getElementById('key-' + type).innerText = newKey;
 	}
 }

@@ -16,27 +16,27 @@
 	<body>
 		<header class="container-fluid bg-dark py-3">
 			<div class="row row-cols-lg-auto g-3 align-items-center">
-				<h1 class="col-12 text-white">Serpent :</h1>
+				<h1 class="col-12 text-white">Serpent : Appuyer sur "Echap" pour gérer les touches !</h1>
 			</div>
 		</header>
 
 		<main class="main d-flex flex-wrap justify-content-center align-items-center bg-secondary">
 			<form id="key-menu" class="menu form col-2 d-none">
 				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">avancer</span>
-					<input class="form-control bg-secondary text-white" type="text" value="z" disabled/>
+	  				<span class="input-group-text bg-dark text-white col-6">monter</span>
+					<p id="key-up" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('up')">z</p>
 				</div>
 				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">reculer</span>
-					<input class="form-control bg-secondary text-white" type="text" value="s" disabled/>
+	  				<span class="input-group-text bg-dark text-white col-6">descendre</span>
+					<p id="key-down" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('down')">s</p>
 				</div>
 				<div class="input-group col-1 mb-3">
 	  				<span class="input-group-text bg-dark text-white col-6">aller à gauche</span>
-					<input class="form-control bg-secondary text-white" type="text" value="q" disabled/>
+					<p id="key-left" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('left')">q</p>
 				</div>
 				<div class="input-group col-1 mb-3">
 	  				<span class="input-group-text bg-dark text-white col-6">aller à droite</span>
-					<input class="form-control bg-secondary text-white" type="text" value="d" disabled/>
+					<p id="key-right" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('right')">d</p>
 				</div>
 
 
