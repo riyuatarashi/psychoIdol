@@ -21,7 +21,7 @@
 		</header>
 
 		<main class="main d-flex flex-wrap justify-content-center align-items-center bg-secondary">
-			<form class="form col-2">
+			<form id="key-menu" class="menu form col-2 d-none">
 				<div class="input-group col-1 mb-3">
 	  				<span class="input-group-text bg-dark text-white col-6">avancer</span>
 					<input class="form-control bg-secondary text-white" type="text" value="z" disabled/>
@@ -44,6 +44,8 @@
 	  				<span class="input-group-text bg-dark text-white col-6">attaquer</span>
 					<input class="form-control bg-secondary text-white" type="text" value="click droit" disabled/>
 				</div>
+
+				<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light">Sauvgarder</button>
 			</form>
 			
 			<canvas id="box" class="box bg-dark rounded-3 m-5" width="10" height="10"></canvas>
