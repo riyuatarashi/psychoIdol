@@ -16,7 +16,7 @@ class Character {
 
 		var _this = this;
 		window.addEventListener("keydown", function(e) {
-			if(_KEYS_DIRECTION[e.key]) {
+			if(_KEYS_DIRECTION[e.key] && _OBJ_.game.updateTimer !== null) {
 				_this.changeDirection(_KEYS_DIRECTION[e.key]);
 			}
 		});
