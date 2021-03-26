@@ -53,6 +53,7 @@
 
 		<div class="sources d-none">
 			<img id="Actor1" src="public/img/characters/Actor1.png"/>
+			<img id="Evil" src="public/img/characters/Evil.png"/>
 		</div>
 	</body>
 
@@ -69,6 +70,8 @@
 					<script src="public/js/camera.js"></script>
 				<!-- character -->
 					<script src="public/js/character.js"></script>
+				<!-- monster -->
+					<script src="public/js/monster.js"></script>
 
 			<!-- fonctions -->
 				<script type="text/javascript">
@@ -104,6 +107,7 @@
 						_OBJ_['map'] = new Map();
 						_OBJ_['camera'] = new Camera(_OBJ_.map.entry.x, _OBJ_.map.entry.y);
 						_OBJ_['character'] = new Character(_OBJ_.map.entry.x, _OBJ_.map.entry.y, 0, document.getElementById('Actor1'), 0, 1);
+						_OBJ_['monster'] = new Monster(_OBJ_.map.exit.x, _OBJ_.map.exit.y, 0, document.getElementById('Evil'), 2, 1);
 
 					_OBJ_.game.update();
 

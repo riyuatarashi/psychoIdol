@@ -35,6 +35,7 @@ class Game {
 
 		_OBJ_.camera.update();
 		_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
+		_OBJ_.monster.auto_move(_OBJ_.camera.x, _OBJ_.camera.y);
 	}
 
 	stopUpdate() {

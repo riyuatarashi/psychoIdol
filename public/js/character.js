@@ -1,5 +1,5 @@
 class Character {
-	constructor(x, y, direction, sprite, offsetX, offsetY) {
+	constructor(x, y, direction, sprite, offsetX, offsetY, monster = false) {
 		this.x = x;
 		this.y = y;
 		this.newX = 0;
@@ -12,14 +12,16 @@ class Character {
 		this.state = 1;
 		this.anime = 0;
 
-		this.speed = 2;
+		this.velocity = 2;
 
-		var _this = this;
-		window.addEventListener("keydown", function(e) {
-			if(_KEYS_DIRECTION[e.key] && _OBJ_.game.updateTimer !== null) {
-				_this.changeDirection(_KEYS_DIRECTION[e.key]);
-			}
-		});
+		if(!monster) {
+			var _this = this;
+			window.addEventListener("keydown", function(e) {
+				if(_KEYS_DIRECTION[e.key] && _OBJ_.game.updateTimer !== null) {
+					_this.changeDirection(_KEYS_DIRECTION[e.key]);
+				}
+			});
+		}
 	}
 
 	draw(camX, camY) {		
@@ -41,13 +43,13 @@ class Character {
 			this.state = (this.state-1 < 0) ? 2 : this.state-1;
 		} else if( this.anime == 0) { this.state = 1; this.anime = 0; }
 
-		this.anime = (this.anime <= 0) ? 0 : this.anime-this.speed;
+		this.anime = (this.anime <= 0) ? 0 : this.anime-this.velocity;
 
-		this.newX = (this.anime == 0 || Math.abs(this.newX) <= this.speed) ? 0 : this.newX;
-		this.newY = (this.anime == 0 || Math.abs(this.newY) <= this.speed) ? 0 : this.newY;
+		this.newX = (this.anime == 0 || Math.abs(this.newX) <= this.velocity) ? 0 : this.newX;
+		this.newY = (this.anime == 0 || Math.abs(this.newY) <= this.velocity) ? 0 : this.newY;
 
-		this.newX = (this.newX > 0) ? this.newX-this.speed : this.newX+this.speed;
-		this.newY = (this.newY > 0) ? this.newY-this.speed : this.newY+this.speed;
+		this.newX = (this.newX > 0) ? this.newX-this.velocity : this.newX+this.velocity;
+		this.newY = (this.newY > 0) ? this.newY-this.velocity : this.newY+this.velocity;
 
 		this.draw(camX, camY);
 	}
