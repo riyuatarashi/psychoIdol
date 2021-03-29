@@ -88,7 +88,8 @@ function bye() {
   setTimeout(function () {
     back.parentNode.removeChild(back);
     main_menu.style.display = "none";
-    game.style.display = "block";
+    game.style.display="block";
+    game.classList.add('aff_display');
   }, 5000);
 
 }
