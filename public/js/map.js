@@ -1,6 +1,9 @@
 class Map {
 	constructor(mapCode = null) {
-		this.mapCode = (mapCode == null) ? this.randMap() : mapCode;
+		this.mapCode = [];
+
+		if(mapCode == null)
+			this.randMap();
 	}
 
 	isInMap(x, y) {
@@ -43,7 +46,7 @@ class Map {
 	}
 
 	randMap() {
-		var entry = null, exit = null, last = {}, mapCode = [], randCase = randInRange(0,2);
+		var entry = null, exit = null, last = {}, randCase = randInRange(0,2);
 
 		this.entry = this.randXY(!!randCase);
 		this.exit = this.randXY(!randCase);
@@ -78,8 +81,6 @@ class Map {
 			add = (this.exit.x == 0) ? 1 : -1;
 				this.writeInMap((this.exit.x+add), this.exit.y, "empty");
 		}
-
-		return mapCode;
 	}
 
 	drawMap(startX, startY, visionWidth = _COUNT_CELLS_WIDTH, visionHeight = _COUNT_CELLS_HEIGHT) {
