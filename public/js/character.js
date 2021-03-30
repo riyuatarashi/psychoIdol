@@ -60,11 +60,12 @@ class Character {
 					"y": this.y + value.upcoming.y
 				};
 
+			this.direction = value.animation;
+
 			if(_OBJ_.map.isInMap(upcoming.x, upcoming.y) && _OBJ_.map.spriteIsWalkable(upcoming.x, upcoming.y))
 			{
 				this.x = upcoming.x;
 				this.y = upcoming.y;
-				this.direction = value.animation;
 				this.anime = _CELLS_SIZE;
 
 				switch(direction) {
