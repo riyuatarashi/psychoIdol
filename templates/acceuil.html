@@ -14,6 +14,44 @@
 	</head>
 
 	<body>
+		<div class="main_menu">
+			<img class="back" src="public/img/background/bg.jpg" alt="">
+			<main class="corp">
+			<h1 class="titre_menu">Psycho Idol</h1>
+			<div class="home">
+			<div class="menu">
+				<button id="play">New game</button>
+				<button id="again">Resume</button>
+				<button id="top">Top score</button>
+			</div>
+			<div>
+				<img class="actor" src="public/img/characters/Actor1_5.png" alt="">
+			</div>
+			</div>
+		
+			<button class="sound">
+				<i class="fas fa-volume-up"></i>
+			
+			</button>
+		 </main>
+		
+		
+		<audio controls id="new" hidden="true" >
+			<source src="public/audio/se/Sword2.m4a" type="audio/mpeg">
+		</audio>
+		<audio controls id="resume" hidden="true" >
+			<source src="public/audio/se/Attack3.m4a" type="audio/mpeg">
+		</audio>
+		<audio controls id="score" hidden="true" >
+			<source src="public/audio/se/Skill3.m4a" type="audio/mpeg">
+		</audio>
+		<audio controls autoplay id="sound" hidden="true" >
+			<source src="public/audio/bgm/Dungeon1.m4a" type="audio/mpeg">
+		</audio>
+		</div>
+
+
+		<div class="game">
 		<header class="container-fluid bg-dark py-3">
 			<div class="row row-cols-lg-auto g-3 align-items-center">
 				<h1 class="col-12 text-white">Serpent : Appuyer sur "Echap" pour gérer les touches !</h1>
@@ -55,6 +93,12 @@
 			<img id="Actor1" src="public/img/characters/Actor1.png"/>
 			<img id="Evil" src="public/img/characters/Evil.png"/>
 		</div>
+		<img id="face_dialogue" src="" alt="">
+		<div class="box_dialogue">
+			<span class="text_dialogue"></span>
+			<i id="click" class="fas fa-mouse-pointer"></i>
+		</div>    
+	</div>
 	</body>
 
 	<!-- Script -->
@@ -74,6 +118,13 @@
 					<script src="public/js/monster.js"></script>
 				<!-- attack -->
 					<script src="public/js/attack.js"></script>
+				<!-- menu -->
+					<script src="public/js/menu.js"></script>	
+				<!-- dialogue -->
+               
+                    <script> let tableauJS = {{ json|raw }}; </script>
+                  
+					<script src="public/js/dialogue.js"></script>	
 
 			<!-- fonctions -->
 				<!-- handle radian function -->
