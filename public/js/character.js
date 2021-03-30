@@ -1,5 +1,5 @@
 class Character {
-	constructor(x, y, direction, sprite, offsetX, offsetY, monster = false) {
+	constructor(x, y, direction, sprite, offsetX, offsetY, pp = .5, hp = 5, monster = false) {
 		this.x = x;
 		this.y = y;
 		this.lastX = x;
@@ -11,6 +11,9 @@ class Character {
 		this.sprite = sprite;
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
+
+		this.pp = pp;
+		this.hp = hp;
 
 		this.state = 1;
 		this.anime = 0;

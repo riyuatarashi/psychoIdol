@@ -100,7 +100,10 @@ class Map {
 	}
 
 	getSprite(x, y) {
-		return this.mapCode[this.getOffset(x, y)];
+		if(Array.isArray(this.mapCode[this.getOffset(x, y)]))
+			return this.mapCode[this.getOffset(x, y)][1];
+		else 
+			return this.mapCode[this.getOffset(x, y)];
 	}
 
 	spriteIsWalkable(x, y) {

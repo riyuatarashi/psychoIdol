@@ -44,8 +44,12 @@ class Game {
 			_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
 			_OBJ_.monster.auto_move(_OBJ_.camera.x, _OBJ_.camera.y);
 
-			for(let i=0; i<_OBJ_['attacks'].length; i++) {
-				_OBJ_['attacks'][i].update();
+			for(let i=0, status; i<_OBJ_.attacks.length; i++) {
+				status = _OBJ_.attacks[i].update();
+				if(status !== "exist") {
+					_OBJ_.attacks.splice(i, 1);
+					console.log(status);
+				}
 			}
 
 			this.frameTime = Date.now();
