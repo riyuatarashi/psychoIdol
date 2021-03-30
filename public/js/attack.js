@@ -8,15 +8,11 @@ class Attack {
 
 		this.x = _OBJ_[this.ObjectOrigineName].x;
 		this.y = _OBJ_[this.ObjectOrigineName].y;
-
-		this.time = 0;
 		this.status = "exist";
 	}
 
 	update() {
-		this.time++;
-
-		if(this.time % this.velocity === 0) {
+		if(_OBJ_['game'].frameId % this.velocity === 0) {
 			this.status = this.move();
 
 			if(this.status === "exist") {
