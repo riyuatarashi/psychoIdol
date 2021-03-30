@@ -50,33 +50,33 @@ class Map {
 
 		for(let y=0; y<_MAP_SIZE.height; y++) {
 			for(let x=0; x<_MAP_SIZE.width; x++) {
-				if(x == this.entry.x && y == this.entry.y) { mapCode[this.getOffset(x, y)] = "entry"; }
+				if(x == this.entry.x && y == this.entry.y) { this.writeInMap(x, y, "entry"); }
 
-				else if(x == this.exit.x && y == this.exit.y) { mapCode[this.getOffset(x, y)] = "exit"; }
+				else if(x == this.exit.x && y == this.exit.y) { this.writeInMap(x, y, "exit"); }
 
-				else if(y==0 || x == 0 || x == _MAP_SIZE.width-1 || y == _MAP_SIZE.height-1) { mapCode[this.getOffset(x, y)] = "wall"; }
+				else if(y==0 || x == 0 || x == _MAP_SIZE.width-1 || y == _MAP_SIZE.height-1) { this.writeInMap(x, y, "wall"); }
 
 				else if((!randInRange(0, 150) || (((x == last.x+1 && y == last.y) || (y == last.y+1 && x == last.x)) && !randInRange(0, 2)))) {
-					mapCode[this.getOffset(x, y)] = "wall";
+					this.writeInMap(x, y, "wall");
 					last.x = x;
 					last.y = y;
 				}
-				else { mapCode[this.getOffset(x, y)] = "empty"; }
+				else { this.writeInMap(x, y, "empty"); }
 			}
 		}
 
 		if(!randCase) {
 			let add = (this.entry.x == 0) ? 1 : -1;
-				mapCode[this.getOffset((this.entry.x+add), this.entry.y)] = "empty";
+				this.writeInMap((this.entry.x+add), this.entry.y, "empty");
 
 			add = (this.exit.y == 0) ? 1 : -1;
-				mapCode[this.getOffset(this.exit.x, (this.exit.y+add))] = "empty";
+				this.writeInMap(this.exit.x, (this.exit.y+add), "empty");
 		} else {
 			let add = (this.entry.y == 0) ? 1 : -1;
-				mapCode[this.getOffset(this.entry.x, (this.entry.y+add))] = "empty";
+				this.writeInMap(this.entry.x, (this.entry.y+add), "empty");
 
 			add = (this.exit.x == 0) ? 1 : -1;
-				mapCode[this.getOffset((this.exit.x+add), this.exit.y)] = "empty";
+				this.writeInMap((this.exit.x+add), this.exit.y, "empty");
 		}
 
 		return mapCode;
@@ -103,6 +103,10 @@ class Map {
 
 	spriteIsWalkable(x, y) {
 		return (~_SPRITES.walkable.indexOf(this.getSprite(x, y)) != 0);
+	}
+
+	writeInMap(x, y, content) {
+		this.mapCode[this.getOffset(x, y)] = content;
 	}
 
 	logMapCode() {

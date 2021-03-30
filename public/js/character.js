@@ -2,6 +2,9 @@ class Character {
 	constructor(x, y, direction, sprite, offsetX, offsetY) {
 		this.x = x;
 		this.y = y;
+		this.lastX = x;
+		this.lastY = y;
+
 		this.newX = 0;
 		this.newY = 0;
 		this.direction = (direction == null) ? 0 : direction;
@@ -64,8 +67,14 @@ class Character {
 
 			if(_OBJ_.map.isInMap(upcoming.x, upcoming.y) && _OBJ_.map.spriteIsWalkable(upcoming.x, upcoming.y))
 			{
+				this.lastX = this.x;
+				this.lastY = this.y;
 				this.x = upcoming.x;
 				this.y = upcoming.y;
+
+				_OBJ_.map.writeInMap(this.lastX, this.lastY, "empty");
+				_OBJ_.map.writeInMap(this.x, this.y, "character");
+
 				this.anime = _CELLS_SIZE;
 
 				switch(direction) {
