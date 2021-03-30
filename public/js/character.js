@@ -72,8 +72,8 @@ class Character {
 				this.x = upcoming.x;
 				this.y = upcoming.y;
 
-				_OBJ_.map.writeInMap(this.lastX, this.lastY, "empty");
-				_OBJ_.map.writeInMap(this.x, this.y, "character");
+				_OBJ_.map.eraseInMap(this.lastX, this.lastY);
+				_OBJ_.map.writeInMap(this.x, this.y, "character", true);
 
 				this.anime = _CELLS_SIZE;
 

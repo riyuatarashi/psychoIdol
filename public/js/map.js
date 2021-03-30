@@ -86,9 +86,10 @@ class Map {
 	drawMap(startX, startY, visionWidth = _COUNT_CELLS_WIDTH, visionHeight = _COUNT_CELLS_HEIGHT) {
 		context.clearRect(0,0,_WORLD_WIDTH,_WORLD_HEIGHT);
 
-		for(let i=this.getOffset(startX, startY), y=0, x=0; y<visionHeight; i++) {
+		for(let i=this.getOffset(startX, startY), sprite, y=0, x=0; y<visionHeight; i++) {
 			if(x == visionWidth) { y++; i += _MAP_SIZE.width-visionWidth; x = 0; }
-			this.drawSquare(x, y, this.mapCode[i]);
+			sprite = (Array.isArray(this.mapCode[i])) ? this.mapCode[i][0] : this.mapCode[i];
+			this.drawSquare(x, y, sprite);
 			x++;
 		}
 	}
@@ -106,18 +107,37 @@ class Map {
 		return (~_SPRITES.walkable.indexOf(this.getSprite(x, y)) != 0);
 	}
 
-	writeInMap(x, y, content) {
-		this.mapCode[this.getOffset(x, y)] = content;
+	writeInMap(x, y, content, inside = false) {
+		let offset = this.getOffset(x, y);
+
+		if(isString(this.mapCode[offset]) && inside)
+			this.mapCode[offset] = [this.mapCode[offset], content];
+		else
+			this.mapCode[offset] = content;
+	}
+
+	eraseInMap(x, y) {
+		let offset = this.getOffset(x, y);
+
+		if(Array.isArray(this.mapCode[offset])) {
+			this.mapCode[offset] = this.mapCode[offset][0];
+		}
+	}
+
+	logMap() {
+		console.log(this.mapCode);
 	}
 
 	logMapCode() {
-		let out = '';
+		let out = '', sprite;
         for (let i = 0; i < this.mapCode.length; i++) {
             if (i % _MAP_SIZE.width == 0 && i!=0) {
                 out += '\n';
             }
 
-            out += _SPRITES_CODE[this.mapCode[i]];
+            sprite = (Array.isArray(this.mapCode[i])) ? _SPRITES_CODE[this.mapCode[i][1]] : _SPRITES_CODE[this.mapCode[i]];
+
+            out += sprite;
         }
         console.log(out);
 	}

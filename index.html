@@ -76,6 +76,7 @@
 
 				<script type="text/javascript">
 					function randInRange(min,max){return Math.floor((Math.random()*max))+min}
+					function isString(v){return typeof v === 'string' || v instanceof String}
 
 					function getPowOf(number, splitter, max, padding) {
 						var out = splitter*Math.round(number/splitter), max = splitter*max;

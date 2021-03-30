@@ -32,6 +32,7 @@ const // toute les constantes
 		"wall": _COLORS.red,
 		"entry": _COLORS.green,
 		"exit": _COLORS.purple,
+		"character": _COLORS.clear,
 
 		"walkable": [ "empty", "entry", "exit" ]
 	},
