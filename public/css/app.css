@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Long+Cang&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kranky&display=swap');
+@font-face {
+    font-family: 'rainyhearts';
+        src: url('font/rainyhearts.ttf') format('ttf')
+  }
 @keyframes nomAnim{
     from {   font-size: 8rem; }
     50%  {   font-size: 7.5rem; }
@@ -34,7 +38,13 @@
       -ms-transform: scale(100)    ;
       -o-transform: scale(100)    ;
 }
+
   }
+@keyframes clignote{
+    from {   opacity: 0; }
+    50%  {   opacity: 1;  }
+    to   {   opacity: 0;  }
+} 
 .main {
 	min-height: calc(100vh - 88px);
 }
@@ -182,4 +192,36 @@
     animation-timing-function: linear;
     animation-delay: 0s; 
     animation-iteration-count: 1;
+}
+    
+.box_dialogue{
+    position: absolute;
+    border: black solid 2.5px;
+    background-color: #eab691;
+    padding: 5px 8px 7px 6px;
+    font-family: 'rainyhearts';
+    font-size: 14pt;
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    height: 5rem;
+    bottom: 5%;
+    margin-left: 1%;
+    z-index: 10;
+}
+.fa-mouse-pointer{
+    align-self: flex-end;
+    font-size: 11pt;
+    animation-name: clignote;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s; 
+    animation-iteration-count: infinite;
+}
+#face_dialogue{
+    position: absolute;
+    left: 1%;
+    bottom: 12%;
+    width: 5%;
+    z-index: 0;
 }
