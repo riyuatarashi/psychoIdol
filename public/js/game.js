@@ -6,6 +6,9 @@ class Game {
 		this.submits = document.querySelectorAll('.submit');
 		this.changeKeys = document.querySelectorAll('.change-key');
 
+		this.frameId = 0;
+		this.frameTime = Date.now();
+
 		var _this = this;
 		window.addEventListener("keydown", function(e) {
 			if(e.key === "Escape") {
@@ -33,11 +36,18 @@ class Game {
 	update() {
 		this.updateTimer = requestAnimationFrame(this.update.bind(this));
 
-		_OBJ_.camera.update();
-		_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
 
-		for(let i=0; i<_OBJ_['attacks'].length; i++) {
-			_OBJ_['attacks'][i].update();
+		if(Date.now()-this.frameTime >= 1000/_FRAME_RATE_MAX) {
+			this.frameId++;
+
+			_OBJ_.camera.update();
+			_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
+
+			for(let i=0; i<_OBJ_['attacks'].length; i++) {
+				_OBJ_['attacks'][i].update();
+			}
+
+			this.frameTime = Date.now();
 		}
 	}
 

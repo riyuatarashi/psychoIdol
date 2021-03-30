@@ -32,6 +32,7 @@ const // toute les constantes
 		"wall": _COLORS.red,
 		"entry": _COLORS.green,
 		"exit": _COLORS.purple,
+		"character": _COLORS.clear,
 
 		"walkable": [ "empty", "entry", "exit" ]
 	},
@@ -78,4 +79,6 @@ var // dernière variable semi-contante, l'utilisateur, ou le jeux pourra les fa
 		"q": _DIRECTION[3],
 		"s": _DIRECTION[1],
 		"d": _DIRECTION[2]
-	};
+	},
+
+	_FRAME_RATE_MAX = 60;
