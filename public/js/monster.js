@@ -24,6 +24,6 @@ class Monster extends Character {
 	}
 
 	attack_opponent() {
-		_OBJ_.attacks.push(new Attack("monster", "character", _CELLS_SIZE/2, _DIRECTION[this.direction], "#fff", 5));
+		_OBJ_.attacks.push(new Attack("monster", "character", (_CELLS_SIZE/2), _DIRECTION[this.direction], "#fff", 5));
 	}
 }
