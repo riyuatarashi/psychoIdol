@@ -97,8 +97,12 @@ class Map {
 		context.fillRect(x*_CELLS_SIZE, y*_CELLS_SIZE, _CELLS_SIZE, _CELLS_SIZE);
 	}
 
+	getSprite(x, y) {
+		return this.mapCode[this.getOffset(x, y)];
+	}
+
 	spriteIsWalkable(x, y) {
-		return (~_SPRITES.walkable.indexOf(this.mapCode[this.getOffset(x, y)]) != 0);
+		return (~_SPRITES.walkable.indexOf(this.getSprite(x, y)) != 0);
 	}
 
 	logMapCode() {

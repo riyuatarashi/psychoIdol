@@ -71,6 +71,9 @@
 					<script src="public/js/character.js"></script>
 
 			<!-- fonctions -->
+				<!-- handle radian function -->
+					<script src="public/js/MathFunction.js"></script>
+
 				<script type="text/javascript">
 					function randInRange(min,max){return Math.floor((Math.random()*max))+min}
 
@@ -104,6 +107,7 @@
 						_OBJ_['map'] = new Map();
 						_OBJ_['camera'] = new Camera(_OBJ_.map.entry.x, _OBJ_.map.entry.y);
 						_OBJ_['character'] = new Character(_OBJ_.map.entry.x, _OBJ_.map.entry.y, 0, document.getElementById('Actor1'), 0, 1);
+						_OBJ_['attacks'] =  [];
 
 					_OBJ_.game.update();
 
