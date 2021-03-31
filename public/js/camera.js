@@ -1,10 +1,10 @@
 class Camera {
-	constructor(x, y) {
+	constructor(x = null, y = null) {
 		this.visionWidth = _MAX_CELLS_WIDTH;
 		this.visionHeight = _MAX_CELLS_HEIGHT;
 
-		this.x = x;
-		this.y = y;
+		this.x = (x === null) ? _OBJ_.map.entry.x : x;
+		this.y = (y === null) ? _OBJ_.map.entry.y : y;
 		this.move(0,0);
 	}
 
@@ -20,6 +20,10 @@ class Camera {
 	move(x, y) {
 		let newX = this.x + x*this.visionWidth,
 			newY = this.y + y*this.visionHeight;
+
+		newX = (newX == 1) ? 0 : (newX + this.visionWidth == _MAP_SIZE.width-2) ? (_MAP_SIZE.width-1) - this.visionWidth : newX;
+		newY = (newY == 1) ? 0 : (newY + this.visionHeight == _MAP_SIZE.height-2) ? (_MAP_SIZE.height-1) - this.visionHeight : newY;
+
 		this.x = (newX + this.visionWidth > (_MAP_SIZE.width-1)) ? (_MAP_SIZE.width-1) - this.visionWidth : (newX < 0) ? 0 : newX;
 		this.y = (newY + this.visionHeight > (_MAP_SIZE.height-1)) ? (_MAP_SIZE.height-1) - this.visionHeight : (newY < 0) ? 0 : newY;
 	}

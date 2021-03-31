@@ -1,5 +1,6 @@
 var // variable semi-contante, l'utilisateur, ou le jeux pourra les faires changer au cour de la partie
-	_MAP_SIZE = {"width": 20, "height": 20};
+	_MAP_SIZE = {"width": 20, "height": 10};
+	_PROBABILITY = ((_MAP_SIZE.width-1) * (_MAP_SIZE.height-1)) * 0.15;
 
 const // toute les constantes
 	canvas = document.getElementById('box'),
@@ -32,16 +33,18 @@ const // toute les constantes
 		"wall": _COLORS.red,
 		"entry": _COLORS.green,
 		"exit": _COLORS.purple,
+		"character": _COLORS.clear,
+		"monster": _COLORS.clear,
 
 		"walkable": [ "empty", "entry", "exit" ]
 	},
 
 		// variable pour les changement de directions des éléments mouvant
 	_DIRECTION = [
-		"up",
 		"down",
+		"left",
 		"right",
-		"left"
+		"up"
 	],
 
 	_DIRECTION_VALUE = {
@@ -74,8 +77,10 @@ var // variable constante mais généré automatiquement
 
 var // dernière variable semi-contante, l'utilisateur, ou le jeux pourra les faires changer au cour de la partie
 	_KEYS_DIRECTION = {
-		"z": _DIRECTION[0],
-		"q": _DIRECTION[3],
-		"s": _DIRECTION[1],
-		"d": _DIRECTION[2]
-	};
+		"s": _DIRECTION[0],
+		"q": _DIRECTION[1],
+		"d": _DIRECTION[2],
+		"z": _DIRECTION[3]
+	},
+
+	_FRAME_RATE_MAX = 60;
