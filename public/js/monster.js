@@ -31,6 +31,8 @@ class Monster extends Character {
 	}
 
 	desctruct() {
+		_OBJ_.map.eraseInMap(this.lastX, this.lastY);
+		_OBJ_.map.eraseInMap(this.x, this.y);
 		_OBJ_.monsters.splice(this.id, 1);
 	}
 }
