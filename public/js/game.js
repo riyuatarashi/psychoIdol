@@ -100,9 +100,5 @@ class Game {
 	gameOver() {
 		this.stopUpdate();
 		alert("vous avez perdu, recherger la page pour recommancer !");
-
-		setTimeout(function() {
-			location.reload(true);
-		}, 2000);
 	}
 }
