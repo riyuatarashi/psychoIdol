@@ -41,9 +41,23 @@ document.querySelector('#again').addEventListener('click', function() {
 });
 document.querySelector('#top').addEventListener('click', function() {
     var player = document.getElementById('score');
-
+    setTimeout(function () {
+      while( menu.firstChild) {
+          menu.removeChild(menu.firstChild);
+      }
+      menu.classList.remove('min'); 
+      afftopscore();
+    }, 1500);
     player.play();
 });
+
+function afftopscore() {
+        let topscore =  document.querySelector('.background');
+        menu.appendChild(topscore);
+        topscore.style.display = "flex";
+        document.querySelector('.home').style.margin = 0;
+        
+}
  
 
 let butsound = document.querySelector('.sound');

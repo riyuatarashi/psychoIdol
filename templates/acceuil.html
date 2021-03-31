@@ -59,32 +59,35 @@
 		</header>
 
 		<main class="main d-flex flex-wrap justify-content-center align-items-center bg-secondary">
-			<form id="key-menu" class="menu form col-2 d-none">
-				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">monter</span>
-					<p id="key-up" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('up')">z</p>
+			<div class="popup">
+				<i class="far fa-pause-circle"></i>
+				<div class="popup-content">
+					<form id="key-menu" class="form col-12">
+						<div class="input-group col-1 mb-3">
+							<span class="input-group-text bg-dark text-white col-6">monter</span>
+							<p id="key-up" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('up')">z</p>
+						</div>
+						<div class="input-group col-1 mb-3">
+							<span class="input-group-text bg-dark text-white col-6">descendre</span>
+							<p id="key-down" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('down')">s</p>
+						</div>
+						<div class="input-group col-1 mb-3">
+							<span class="input-group-text bg-dark text-white col-6">aller à gauche</span>
+							<p id="key-left" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('left')">q</p>
+						</div>
+						<div class="input-group col-1 mb-3">
+							<span class="input-group-text bg-dark text-white col-6">aller à droite</span>
+							<p id="key-right" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('right')">d</p>
+						</div>
+						<div class="input-group col-1 mb-3">
+							<span class="input-group-text bg-dark text-white col-6">attaquer</span>
+							<input class="form-control bg-secondary text-white" type="text" value="click droit" disabled/>
+						</div>
+						<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light mb-2">APPLY</button>
+						<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light">EXIT</button>
+					</form>
 				</div>
-				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">descendre</span>
-					<p id="key-down" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('down')">s</p>
-				</div>
-				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">aller à gauche</span>
-					<p id="key-left" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('left')">q</p>
-				</div>
-				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">aller à droite</span>
-					<p id="key-right" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('right')">d</p>
-				</div>
-
-
-				<div class="input-group col-1 mb-3">
-	  				<span class="input-group-text bg-dark text-white col-6">attaquer</span>
-					<input class="form-control bg-secondary text-white" type="text" value="click droit" disabled/>
-				</div>
-
-				<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light">Sauvgarder</button>
-			</form>
+			</div>
 			
 			<canvas id="box" class="box bg-dark rounded-3 m-5" width="10" height="10"></canvas>
 		</main>
@@ -97,7 +100,100 @@
 		<div class="box_dialogue">
 			<span class="text_dialogue"></span>
 			<i id="click" class="fas fa-mouse-pointer"></i>
-		</div>    
+		</div>	
+	</div>
+	<div class="background">
+	<div class="scores">
+		<div class="scores-content">
+			<h1 class="title-highscores">HIGHSCORES</h1>
+			<div class="titles">
+				<h2>NAME</h2>
+				<h2>SCORE</h2>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">1.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">12 505</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">2.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">10 665</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">3.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">9 830</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">4.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">9 550</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">5.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">9 120</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">6.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">7 960</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">7.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">6 635</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">8.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">5 455</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">9.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">4 360</p>
+			</div>
+	
+			<div class="score-group">
+				<div class="user-num">
+					<p class="num">10.</p>
+					<p class="user">BIDULE</p>
+				</div>
+				<p class="score">1 855</p>
+			</div>
+	
+			<a class="again" href="">PLAY AGAIN</a>
+		</div>
+	</div>
 	</div>
 	</body>
 
@@ -123,7 +219,7 @@
 				<!-- menu -->
 					<script src="public/js/menu.js"></script>	
 				<!-- dialogue -->
-                    <script> let tableauJS = {{ json|raw }}; </script>
+					<script> let tableauJS = {{ json|raw }}; </script>
 					<script src="public/js/dialogue.js"></script>	
 
 			<!-- fonctions -->
