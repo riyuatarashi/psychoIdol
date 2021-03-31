@@ -60,6 +60,10 @@ class Game {
 
 			this.frameTime = Date.now();
 		}
+
+		if(_OBJ_.monsters.length == 0) {
+			this.gameWin();
+		}
 	}
 
 	stopUpdate() {
@@ -99,6 +103,11 @@ class Game {
 
 	gameOver() {
 		this.stopUpdate();
-		alert("vous avez perdu, recherger la page pour recommancer !");
+		alert("Vous avez perdu, recherger la page pour recommancer !");
+	}
+
+	gameWin() {
+		this.stopUpdate();
+		alert("Vous avez gagné, recherger la page pour recommancer !");
 	}
 }
