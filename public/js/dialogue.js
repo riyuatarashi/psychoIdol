@@ -59,6 +59,8 @@ function brand() {
     if (text_dialogue[d].brand == 1 ) {
         box_dialogue.style.display = "none";
         face_dialogue.style.display = "none";
+
+        _OBJ_.game.update();
     }
 }
 

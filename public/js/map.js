@@ -53,11 +53,7 @@ class Map {
 
 		for(let y=0; y<_MAP_SIZE.height; y++) {
 			for(let x=0; x<_MAP_SIZE.width; x++) {
-				if(x == this.entry.x && y == this.entry.y) { this.writeInMap(x, y, "entry"); }
-
-				else if(x == this.exit.x && y == this.exit.y) { this.writeInMap(x, y, "exit"); }
-
-				else if(y==0 || x == 0 || x == _MAP_SIZE.width-1 || y == _MAP_SIZE.height-1) { this.writeInMap(x, y, "wall"); }
+				if(y==0 || x == 0 || x == _MAP_SIZE.width-1 || y == _MAP_SIZE.height-1) { this.writeInMap(x, y, "wall"); }
 
 				else if((!randInRange(0, 150) || (((x == last.x+1 && y == last.y) || (y == last.y+1 && x == last.x)) && !randInRange(0, 2)))) {
 					this.writeInMap(x, y, "wall");
@@ -67,6 +63,9 @@ class Map {
 				else { this.writeInMap(x, y, "empty"); }
 			}
 		}
+
+		this.writeInMap(this.entry.x, this.entry.y, "entry");
+		this.writeInMap(this.exit.x, this.exit.y, "exit");
 
 		if(!randCase) {
 			let add = (this.entry.x == 0) ? 1 : -1;
@@ -101,7 +100,7 @@ class Map {
 
 	getSprite(x, y) {
 		if(Array.isArray(this.mapCode[this.getOffset(x, y)]))
-			return this.mapCode[this.getOffset(x, y)][1];
+			return this.mapCode[this.getOffset(x, y)].splice(0, 1);
 		else 
 			return this.mapCode[this.getOffset(x, y)];
 	}
@@ -114,7 +113,15 @@ class Map {
 		let offset = this.getOffset(x, y);
 
 		if(isString(this.mapCode[offset]) && inside)
-			this.mapCode[offset] = [this.mapCode[offset], content];
+			if(Array.isArray(content)) {
+				let out = [this.mapCode[offset]];
+				for(let i=0; i<content.length; i++) {
+					out.push(content[i]);
+				}
+				this.mapCode[offset] = out;
+			}
+			else
+				this.mapCode[offset] = [this.mapCode[offset], content];
 		else
 			this.mapCode[offset] = content;
 	}

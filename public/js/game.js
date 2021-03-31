@@ -1,5 +1,7 @@
 class Game {
-	constructor() {
+	constructor(numberMonster) {
+		this.numberMonster = numberMonster;
+
 		this.openMenu = [];
 		this.key_type = null;
 
@@ -34,21 +36,26 @@ class Game {
 	}
 
 	update() {
+		if(_OBJ_.monsters.length == 0) { this.createMonster(); }
+
 		this.updateTimer = requestAnimationFrame(this.update.bind(this));
 
-
 		if(Date.now()-this.frameTime >= 1000/_FRAME_RATE_MAX) {
+			_OBJ_.map.logMap();
+
 			this.frameId++;
 
 			_OBJ_.camera.update();
-			_OBJ_.character.update(_OBJ_.camera.x, _OBJ_.camera.y);
-			_OBJ_.monster.auto_move(_OBJ_.camera.x, _OBJ_.camera.y);
+			_OBJ_.character.update();
+
+			for(let i=0; i<_OBJ_.monsters.length; i++) {
+				_OBJ_.monsters[i].auto_move();
+			}
 
 			for(let i=0, status; i<_OBJ_.attacks.length; i++) {
 				status = _OBJ_.attacks[i].update();
 				if(status !== "exist") {
 					_OBJ_.attacks.splice(i, 1);
-					console.log(status);
 				}
 			}
 
@@ -83,5 +90,20 @@ class Game {
 		_KEYS_DIRECTION = Object.fromEntries(keySet);
 		console.log('key-' + type);
 		document.getElementById('key-' + type).innerText = newKey;
+	}
+
+	createMonster() {
+		for(let i=0; i<this.numberMonster; i++) {
+			_OBJ_.monsters.push(new Monster(i, document.getElementById('Monster'), 2, 1));
+		}
+	}
+
+	gameOver() {
+		this.stopUpdate();
+		alert("vous avez perdu, recherger la page pour recommancer !");
+
+		setTimeout(function() {
+			location.reload(true);
+		}, 2000);
 	}
 }
