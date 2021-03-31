@@ -31,13 +31,14 @@ class Character {
 			window.addEventListener('click', function() {
 				if(_OBJ_.game.updateTimer !== null) {
 					_this.attack();
+					_OBJ_.map.logMap();
 				}
 			});
 		}
 	}
 
 	attack() {
-		_OBJ_.attacks.push(new Attack("character", "monster", _CELLS_SIZE, _DIRECTION[this.direction], "#fff", 5));
+		_OBJ_.attacks.push(new Attack("character", "monsters", _CELLS_SIZE, _DIRECTION[this.direction], "#fff", 5));
 	}
 
 	draw() {		

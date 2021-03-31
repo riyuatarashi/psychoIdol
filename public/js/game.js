@@ -41,8 +41,6 @@ class Game {
 		this.updateTimer = requestAnimationFrame(this.update.bind(this));
 
 		if(Date.now()-this.frameTime >= 1000/_FRAME_RATE_MAX) {
-			_OBJ_.map.logMap();
-
 			this.frameId++;
 
 			_OBJ_.camera.update();
@@ -57,6 +55,7 @@ class Game {
 				if(status !== "exist") {
 					_OBJ_.attacks.splice(i, 1);
 				}
+				console.log(status);
 			}
 
 			this.frameTime = Date.now();
@@ -94,7 +93,7 @@ class Game {
 
 	createMonster() {
 		for(let i=0; i<this.numberMonster; i++) {
-			_OBJ_.monsters.push(new Monster(i, document.getElementById('Monster'), 2, 1));
+			_OBJ_.monsters.push(new Monster(i, document.getElementById('Monster'), 2, 1, randInRange(85, 151)));
 		}
 	}
 

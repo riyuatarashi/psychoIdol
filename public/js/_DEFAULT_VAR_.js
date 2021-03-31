@@ -1,5 +1,6 @@
 var // variable semi-contante, l'utilisateur, ou le jeux pourra les faires changer au cour de la partie
-	_MAP_SIZE = {"width": 20, "height": 20};
+	_MAP_SIZE = {"width": 20, "height": 10};
+	_PROBABILITY = ((_MAP_SIZE.width-1) * (_MAP_SIZE.height-1)) * 0.15;
 
 const // toute les constantes
 	canvas = document.getElementById('box'),

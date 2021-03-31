@@ -55,7 +55,7 @@ class Map {
 			for(let x=0; x<_MAP_SIZE.width; x++) {
 				if(y==0 || x == 0 || x == _MAP_SIZE.width-1 || y == _MAP_SIZE.height-1) { this.writeInMap(x, y, "wall"); }
 
-				else if((!randInRange(0, 150) || (((x == last.x+1 && y == last.y) || (y == last.y+1 && x == last.x)) && !randInRange(0, 2)))) {
+				else if((!randInRange(0, _PROBABILITY) || (((x == last.x+1 && y == last.y) || (y == last.y+1 && x == last.x)) && !randInRange(0, 2)))) {
 					this.writeInMap(x, y, "wall");
 					last.x = x;
 					last.y = y;
@@ -99,10 +99,19 @@ class Map {
 	}
 
 	getSprite(x, y) {
-		if(Array.isArray(this.mapCode[this.getOffset(x, y)]))
-			return this.mapCode[this.getOffset(x, y)].splice(0, 1);
+		let spriteCode = this.mapCode[this.getOffset(x, y)];
+		if(Array.isArray(spriteCode))
+			return spriteCode[0];
 		else 
-			return this.mapCode[this.getOffset(x, y)];
+			return spriteCode;
+	}
+
+	getEntity(x, y) {
+		let spriteCode = this.mapCode[this.getOffset(x, y)];
+		if (Array.isArray(spriteCode))
+			return spriteCode;
+		else
+			return "empty";
 	}
 
 	spriteIsWalkable(x, y) {
@@ -114,11 +123,7 @@ class Map {
 
 		if(isString(this.mapCode[offset]) && inside)
 			if(Array.isArray(content)) {
-				let out = [this.mapCode[offset]];
-				for(let i=0; i<content.length; i++) {
-					out.push(content[i]);
-				}
-				this.mapCode[offset] = out;
+				this.mapCode[offset] = [this.mapCode[offset], content[0], content[1]];
 			}
 			else
 				this.mapCode[offset] = [this.mapCode[offset], content];
