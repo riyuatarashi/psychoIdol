@@ -1,5 +1,4 @@
 # PsychoIdol
-![Image Text](https://cdn.discordapp.com/attachments/810783962531364884/823569067323293746/shalltear_1-min-min-min.gif)
 
 ## Table of Contents
 1. [General Info](#general-info)
