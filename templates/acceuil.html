@@ -59,7 +59,7 @@
 		</header>
 
 		<main class="main d-flex flex-wrap justify-content-center align-items-center bg-secondary">
-			<form id="key-menu" class="menu form col-2 d-none">
+			<form id="key-menu" class="form col-2 d-none">
 				<div class="input-group col-1 mb-3">
 	  				<span class="input-group-text bg-dark text-white col-6">monter</span>
 					<p id="key-up" class="change-key form-control bg-secondary text-white mb-0" type="text" onclick="_OBJ_.game.setKeyType('up')">z</p>
@@ -83,7 +83,7 @@
 					<input class="form-control bg-secondary text-white" type="text" value="click droit" disabled/>
 				</div>
 
-				<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light">Sauvgarder</button>
+				<button ref="key-menu" type="button" class="submit col-4 offset-4 btn btn-outline-light">Apply</button>
 			</form>
 			
 			<canvas id="box" class="box bg-dark rounded-3 m-5" width="10" height="10"></canvas>
@@ -91,7 +91,7 @@
 
 		<div class="sources d-none">
 			<img id="Actor1" src="public/img/characters/Actor1.png"/>
-			<img id="Evil" src="public/img/characters/Evil.png"/>
+			<img id="Monster" src="public/img/characters/Monster.png"/>
 		</div>
 		<img id="face_dialogue" src="" alt="">
 		<div class="box_dialogue">
@@ -122,14 +122,10 @@
 					<script src="public/js/menu.js"></script>	
 
 				<!-- dialogue -->
-                    <script> let tableauJS = {{ json|raw }}; </script>
-                  
+                    <script type="text/javascript"> let tableauJS = {{ json|raw }}; </script>
 					<script src="public/js/dialogue.js"></script>	
 
 			<!-- fonctions -->
-				<!-- handle radian function -->
-					<script src="public/js/MathFunction.js"></script>
-
 				<script type="text/javascript">
 					function randInRange(min,max){return Math.floor((Math.random()*max))+min}
 					function isString(v){return typeof v === 'string' || v instanceof String}
@@ -160,16 +156,13 @@
 					canvas.height = _WORLD_HEIGHT;
 
 					var _OBJ_ = {};
-						_OBJ_['game'] = new Game();
+						_OBJ_['game'] = new Game(3);
 						_OBJ_['map'] = new Map();
-						_OBJ_['camera'] = new Camera(_OBJ_.map.entry.x, _OBJ_.map.entry.y);
-						_OBJ_['character'] = new Character(_OBJ_.map.entry.x, _OBJ_.map.entry.y, 0, document.getElementById('Actor1'), 0, 1);
-						_OBJ_['monster'] = new Monster(_OBJ_.map.exit.x, _OBJ_.map.exit.y, 0, document.getElementById('Evil'), 2, 1);
+						_OBJ_['camera'] = new Camera();
+						_OBJ_['character'] = new Character(document.getElementById('Actor1'), 0, 1);
+						_OBJ_['monsters'] = [];
 						_OBJ_['attacks'] =  [];
 
-					_OBJ_.game.update();
-
 					logSizes();
-					_OBJ_.map.logMapCode();
 				</script>
 </html>

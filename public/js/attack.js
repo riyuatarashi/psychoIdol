@@ -35,9 +35,13 @@ class Attack {
 
 		let spriteOfBox = _OBJ_.map.getSprite(Math.trunc(this.x/_CELLS_SIZE), Math.trunc(this.y/_CELLS_SIZE));
 
-		if(spriteOfBox != "empty") {
-			if(spriteOfBox == this.opponentName) {
-				_OBJ_[spriteOfBox].hp -= _OBJ_[this.objectOrigineName].pp;
+		if(spriteOfBox[0] != "empty") {
+			if(spriteOfBox[0] == this.opponentName) {
+				if(spriteOfBox[0] != "monster")
+					_OBJ_[spriteOfBox].hp -= _OBJ_[this.objectOrigineName].pa;
+				else
+					_OBJ_.monsters[spriteOfBox[1]].hp -= _OBJ_[this.objectOrigineName].pa;
+				
 				return "touched";
 			}
 			else {

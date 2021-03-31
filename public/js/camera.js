@@ -1,10 +1,10 @@
 class Camera {
-	constructor(x, y) {
+	constructor(x = null, y = null) {
 		this.visionWidth = _MAX_CELLS_WIDTH;
 		this.visionHeight = _MAX_CELLS_HEIGHT;
 
-		this.x = x;
-		this.y = y;
+		this.x = (x === null) ? _OBJ_.map.entry.x : x;
+		this.y = (y === null) ? _OBJ_.map.entry.y : y;
 		this.move(0,0);
 	}
 
